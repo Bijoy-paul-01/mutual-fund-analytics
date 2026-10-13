@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 1: Mutual Fund Analytics Presentation</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .slide { display: none; }
+    .slide.active { display: block; }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-4 md:p-8 min-h-screen flex flex-col justify-between">
+
+  <!-- Top Navigation & Header -->
+  <header class="flex items-center justify-between pb-4 border-b border-[var(--border)] mb-6">
+    <div class="flex items-center space-x-3">
+      <div class="w-3 h-8 bg-teal-500 rounded-sm"></div>
+      <div>
+        <h1 class="text-xs uppercase tracking-widest font-bold text-teal-400">Mutual Fund Quantitative Analytics</h1>
+        <p class="text-sm font-semibold text-[var(--foreground)]">Day 1: Ingestion, Architecture & Quality Audit</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-2 text-xs font-mono text-[var(--muted-foreground)]">
+      <span id="slideIndicator" class="px-3 py-1 bg-[var(--card)] rounded-full border border-[var(--border)]">Slide 1 / 8</span>
+    </div>
+  </header>
+
+  <!-- Slide Container -->
+  <main class="flex-1 flex flex-col justify-center">
+
+    <!-- SLIDE 1: Title -->
+    <div class="slide active" id="slide-1">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8 md:p-12 shadow-xl relative overflow-hidden">
+        <div class="absolute -right-12 -top-12 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-3xl">
+          <span class="inline-block px-3 py-1 bg-sky-500/10 text-sky-400 text-xs font-bold rounded-md mb-4 border border-sky-500/20 tracking-wider uppercase">
+            Day 1 Project Briefing
+          </span>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-[var(--foreground)] leading-tight mb-4">
+            Indian Mutual Fund Analytics & Live Ingestion Engine
+          </h2>
+          <p class="text-base md:text-lg text-[var(--muted-foreground)] mb-8 leading-relaxed">
+            Multi-Dataset Ingestion, AMFI Code Referential Integrity Verification, Data Quality Anomaly Auditing, and Real-Time NAV API Pipeline via <code class="text-teal-400 bg-teal-950/30 px-2 py-0.5 rounded">mfapi.in</code>.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-[var(--border)] text-xs text-[var(--muted-foreground)]">
+            <div>
+              <span class="block text-[var(--foreground)] font-semibold">Author</span>
+              Bijoy Paul
+            </div>
+            <div>
+              <span class="block text-[var(--foreground)] font-semibold">GitHub Repository</span>
+              <a href="https://github.com/Bijoy-paul-01/mutual-fund-analytics" target="_blank" class="text-teal-400 hover:underline">mutual-fund-analytics</a>
+            </div>
+            <div>
+              <span class="block text-[var(--foreground)] font-semibold">Git Release</span>
+              Day 1: Data ingestion complete
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Project Architecture -->
+    <div class="slide" id="slide-2">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="mb-6">
+          <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Foundation & Scaffolding</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-[var(--foreground)]">Project Architecture & Version Control</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)]">
+            <h3 class="text-teal-400 font-bold text-base mb-2">📁 Modular Directory</h3>
+            <ul class="text-xs space-y-2 text-[var(--muted-foreground)]">
+              <li><strong class="text-[var(--foreground)]">data/raw/</strong>: Immutable CSVs and live API responses</li>
+              <li><strong class="text-[var(--foreground)]">data/processed/</strong>: Cleaned and transformed datasets</li>
+              <li><strong class="text-[var(--foreground)]">notebooks/</strong>: Interactive exploration in Jupyter</li>
+              <li><strong class="text-[var(--foreground)]">sql/</strong>: Relational DDL tables (<code class="text-teal-400">schema.sql</code>)</li>
+              <li><strong class="text-[var(--foreground)]">reports/</strong>: Automated data audit summaries</li>
+            </ul>
+          </div>
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)]">
+            <h3 class="text-sky-400 font-bold text-base mb-2">🐙 Git & GitHub Remote</h3>
+            <ul class="text-xs space-y-2 text-[var(--muted-foreground)]">
+              <li><strong class="text-[var(--foreground)]">Remote</strong>: <code class="text-sky-300">origin/main</code> synced to GitHub</li>
+              <li><strong class="text-[var(--foreground)]">Commit</strong>: <code class="text-teal-300">"Day 1: Data ingestion complete"</code></li>
+              <li><strong class="text-[var(--foreground)]">Scaffolding</strong>: Directory tracking via <code class="text-teal-400">.gitkeep</code></li>
+              <li><strong class="text-[var(--foreground)]">Exclusions</strong>: Clean <code class="text-teal-400">.gitignore</code> for checkpoints</li>
+            </ul>
+          </div>
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)]">
+            <h3 class="text-amber-400 font-bold text-base mb-2">📦 Dependency Management</h3>
+            <ul class="text-xs space-y-2 text-[var(--muted-foreground)]">
+              <li><strong class="text-[var(--foreground)]">Data Engine</strong>: pandas 2.3.3, numpy 2.2.6</li>
+              <li><strong class="text-[var(--foreground)]">Visualization</strong>: plotly 7.1.0, seaborn, matplotlib</li>
+              <li><strong class="text-[var(--foreground)]">Storage & API</strong>: sqlalchemy 2.0.54, requests</li>
+              <li><strong class="text-[var(--foreground)]">Environment</strong>: Jupyter Lab/Notebook ready</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Datasets Catalog -->
+    <div class="slide" id="slide-3">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="mb-4 flex justify-between items-center">
+          <div>
+            <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">Multi-Domain Coverage</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-[var(--foreground)]">All 10 Ingested CSV Datasets</h2>
+          </div>
+          <span class="px-3 py-1 bg-teal-500/10 text-teal-400 text-xs font-mono rounded-md border border-teal-500/20">46,000 NAV rows | 32,778 Transactions</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border border-[var(--border)] rounded-lg overflow-hidden">
+            <thead class="bg-teal-900/40 text-teal-300 font-bold border-b border-[var(--border)]">
+              <tr>
+                <th class="p-2.5">#</th>
+                <th class="p-2.5">Dataset</th>
+                <th class="p-2.5">Shape</th>
+                <th class="p-2.5">Primary Key / Grain</th>
+                <th class="p-2.5">Description & Domain Role</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[var(--border)] text-[var(--muted-foreground)]">
+              <tr><td class="p-2 font-mono text-teal-400">1</td><td class="p-2 font-semibold text-[var(--foreground)]">01_fund_master.csv</td><td class="p-2 font-mono text-sky-400">40 × 15</td><td class="p-2 font-mono">amfi_code</td><td class="p-2">Scheme registry, TER, exit load, SEBI categorization</td></tr>
+              <tr><td class="p-2 font-mono text-teal-400">2</td><td class="p-2 font-semibold text-[var(--foreground)]">02_nav_history.csv</td><td class="p-2 font-mono text-sky-400">46,000 × 3</td><td class="p-2 font-mono">amfi_code + date</td><td class="p-2">Daily continuous NAV history (1,150 days per fund)</td></tr>
+              <tr><td class="p-2 font-mono text-teal-400">3</td><td class="p-2 font-semibold text-[var(--foreground)]">03_aum_by_fund_house.csv</td><td class="p-2 font-mono text-sky-400">90 × 5</td><td class="p-2 font-mono">date + fund_house</td><td class="p-2">Quarterly AUM trends across top 10 AMCs</td></tr>
+              <tr><td class="p-2 font-mono text-teal-400">4</td><td class="p-2 font-semibold text-[var(--foreground)]">04_monthly_sip_inflows.csv</td><td class="p-2 font-mono text-sky-400">48 × 6</td><td class="p-2 font-mono">month</td><td class="p-2">Industry SIP inflows, active folios & AUM scale</td></tr>
+              <tr><td class="p-2 font-mono text-teal-400">5</td><td class="p-2 font-semibold text-[var(--foreground)]">05_category_inflows.csv</td><td class="p-2 font-mono text-sky-400">144 × 3</td><td class="p-2 font-mono">month + category</td><td class="p-2">Segmented monthly equity/debt net inflows</td></tr>
+              <tr><td class="p-2 font-mono text-teal-400">6</td><td class="p-2 font-semibold text-[var(--foreground)]">06_industry_folio_count.csv</td><td class="p-2 font-mono text-sky-400">21 × 6</td><td class="p-2 font-mono">month</td><td class="p-2">Total & asset-class folio counts (Equity, Debt, Hybrid)</td></tr>
+              <tr><td class="p-2 font-mono text-teal-400">7</td><td class="p-2 font-semibold text-[var(--foreground)]">07_scheme_performance.csv</td><td class="p-2 font-mono text-sky-400">40 × 19</td><td class="p-2 font-mono">amfi_code</td><td class="p-2">Alpha, Beta, Sharpe, Sortino, max drawdown, ratings</td></tr>
+              <tr><td class="p-2 font-mono text-teal-400">8</td><td class="p-2 font-semibold text-[var(--foreground)]">08_investor_transactions.csv</td><td class="p-2 font-mono text-sky-400">32,778 × 13</td><td class="p-2 font-mono">investor_id + date</td><td class="p-2">Retail/HNI ticket sizes, cities, payment mode, KYC</td></tr>
+              <tr><td class="p-2 font-mono text-teal-400">9</td><td class="p-2 font-semibold text-[var(--foreground)]">09_portfolio_holdings.csv</td><td class="p-2 font-mono text-sky-400">322 × 8</td><td class="p-2 font-mono">amfi_code + symbol</td><td class="p-2">Constituent stock weights & sector distribution</td></tr>
+              <tr><td class="p-2 font-mono text-teal-400">10</td><td class="p-2 font-semibold text-[var(--foreground)]">10_benchmark_indices.csv</td><td class="p-2 font-mono text-sky-400">8,050 × 3</td><td class="p-2 font-mono">date + index_name</td><td class="p-2">Closing levels for NIFTY50, Midcap150, CRISIL Gilt</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Fund Master & Scheme Architecture -->
+    <div class="slide" id="slide-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="mb-6">
+          <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Classification Framework</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-[var(--foreground)]">Fund Master & AMFI Scheme Code Architecture</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div class="bg-[var(--background)] p-4 rounded-xl border border-[var(--border)] text-center">
+            <span class="text-2xl font-black text-teal-400 block">10</span>
+            <span class="text-xs font-bold text-[var(--foreground)]">Fund Houses</span>
+            <span class="text-[11px] text-[var(--muted-foreground)] block mt-1">SBI, HDFC, ICICI, Nippon, Kotak, Axis, ABSL, UTI, Mirae, DSP</span>
+          </div>
+          <div class="bg-[var(--background)] p-4 rounded-xl border border-[var(--border)] text-center">
+            <span class="text-2xl font-black text-sky-400 block">2</span>
+            <span class="text-xs font-bold text-[var(--foreground)]">Asset Classes</span>
+            <span class="text-[11px] text-[var(--muted-foreground)] block mt-1">Equity (34 schemes) & Debt (6 schemes)</span>
+          </div>
+          <div class="bg-[var(--background)] p-4 rounded-xl border border-[var(--border)] text-center">
+            <span class="text-2xl font-black text-amber-400 block">12</span>
+            <span class="text-xs font-bold text-[var(--foreground)]">SEBI Sub-Categories</span>
+            <span class="text-[11px] text-[var(--muted-foreground)] block mt-1">Large, Mid, Small, Flexi, ELSS, Liquid, Gilt, Value...</span>
+          </div>
+          <div class="bg-[var(--background)] p-4 rounded-xl border border-[var(--border)] text-center">
+            <span class="text-2xl font-black text-rose-400 block">5</span>
+            <span class="text-xs font-bold text-[var(--foreground)]">Risk Grades</span>
+            <span class="text-[11px] text-[var(--muted-foreground)] block mt-1">Low, Moderate, Moderately High, High, Very High</span>
+          </div>
+        </div>
+        <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)]">
+          <h3 class="text-teal-400 font-bold text-sm mb-3">AMFI Scheme Code Design & Plan Economics</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-[var(--muted-foreground)]">
+            <div>
+              <p><strong class="text-[var(--foreground)]">6-Digit Immutable Key</strong>: Unique identifier assigned by AMFI ensuring global uniqueness across schemes and plan variants.</p>
+              <p class="mt-2"><strong class="text-[var(--foreground)]">SEBI Categorization Codes</strong>: Standardized mapping (e.g., <code class="text-teal-400">EC01</code> for Large Cap, <code class="text-teal-400">EC02</code> for Mid Cap, <code class="text-teal-400">DC01</code> for Liquid).</p>
+            </div>
+            <div>
+              <p><strong class="text-[var(--foreground)]">Direct vs. Regular Spread</strong>: Regular plans average <span class="text-amber-400 font-bold">1.35%</span> TER vs. Direct plans at <span class="text-teal-400 font-bold">0.78%</span> TER.</p>
+              <p class="mt-2"><strong class="text-[var(--foreground)]">Commission Delta</strong>: A <span class="text-rose-400 font-bold">0.57% (57 bps)</span> annual distributor drag compounds significantly over 10+ year investment horizons.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Live NAV Ingestion Engine -->
+    <div class="slide" id="slide-5">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="mb-4">
+          <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">REST API Pipeline</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-[var(--foreground)]">Real-Time NAV Integration (<code class="text-teal-400">mfapi.in</code>)</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)] flex flex-col justify-between">
+            <div>
+              <h3 class="text-teal-400 font-bold text-sm mb-2">⚡ live_nav_fetch.py Architecture</h3>
+              <p class="text-xs text-[var(--muted-foreground)] mb-3 leading-relaxed">
+                Automated REST client with timeout handling and error recovery. Ingests nested metadata, cleans daily dates into <code class="text-teal-300">YYYY-MM-DD</code>, and dumps raw CSVs.
+              </p>
+              <div class="text-[11px] font-mono bg-slate-900/80 p-2.5 rounded border border-[var(--border)] text-sky-300">
+                GET https://api.mfapi.in/mf/{amfi_code}<br>
+                Response: { meta: {...}, data: [...] }
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-[var(--border)] text-[11px] text-[var(--muted-foreground)]">
+              Outputs: <code class="text-teal-400">data/raw/live_nav_{code}.csv</code>
+            </div>
+          </div>
+          <div class="md:col-span-2 overflow-x-auto">
+            <table class="w-full text-left text-xs border border-[var(--border)] rounded-lg overflow-hidden">
+              <thead class="bg-sky-900/40 text-sky-300 font-bold border-b border-[var(--border)]">
+                <tr>
+                  <th class="p-2">Code</th>
+                  <th class="p-2">Target Scheme</th>
+                  <th class="p-2">Live Date</th>
+                  <th class="p-2">Latest NAV</th>
+                  <th class="p-2">History Depth</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[var(--border)] text-[var(--muted-foreground)]">
+                <tr class="bg-teal-950/20 font-semibold text-[var(--foreground)]">
+                  <td class="p-2 font-mono text-teal-400">125497</td><td class="p-2">HDFC Top 100 Direct</td><td class="p-2 font-mono">2026-10-12</td><td class="p-2 font-mono text-amber-400">₹ 206.53</td><td class="p-2 font-mono">3,183 records</td>
+                </tr>
+                <tr><td class="p-2 font-mono text-teal-400">119551</td><td class="p-2">SBI Bluechip Fund</td><td class="p-2 font-mono">2026-10-12</td><td class="p-2 font-mono text-amber-400">₹ 106.85</td><td class="p-2 font-mono">3,327 records</td></tr>
+                <tr><td class="p-2 font-mono text-teal-400">120503</td><td class="p-2">ICICI Bluechip Fund</td><td class="p-2 font-mono">2026-10-12</td><td class="p-2 font-mono text-amber-400">₹ 105.09</td><td class="p-2 font-mono">3,399 records</td></tr>
+                <tr><td class="p-2 font-mono text-teal-400">118632</td><td class="p-2">Nippon Large Cap Fund</td><td class="p-2 font-mono">2026-10-12</td><td class="p-2 font-mono text-amber-400">₹ 94.57</td><td class="p-2 font-mono">3,390 records</td></tr>
+                <tr><td class="p-2 font-mono text-teal-400">119092</td><td class="p-2">Axis Bluechip Fund</td><td class="p-2 font-mono">2026-10-12</td><td class="p-2 font-mono text-amber-400">₹ 6,336.04</td><td class="p-2 font-mono">3,656 records</td></tr>
+                <tr><td class="p-2 font-mono text-teal-400">120841</td><td class="p-2">Kotak Bluechip Fund</td><td class="p-2 font-mono">2026-10-12</td><td class="p-2 font-mono text-amber-400">₹ 240.19</td><td class="p-2 font-mono">3,393 records</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Data Quality Audit -->
+    <div class="slide" id="slide-6">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="mb-6">
+          <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Quality Assurance</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-[var(--foreground)]">Data Quality Audit & Anomaly Detection</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)]">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 text-[10px] font-bold rounded">OBSERVATION 1</span>
+              <h3 class="text-[var(--foreground)] font-bold text-sm">SIP YoY Growth Nulls</h3>
+            </div>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-3">
+              12 missing values in <code class="text-teal-400">monthly_sip_inflows['yoy_growth_pct']</code> for months 2022-01 through 2022-12.
+            </p>
+            <div class="p-2.5 bg-amber-950/20 border border-amber-500/30 rounded text-[11px] text-amber-300">
+              <strong>Domain Root Cause:</strong> Dataset begins in Jan 2022; calculating 1-year YoY percentage requires absent 2021 historical base.
+            </div>
+          </div>
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)]">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="px-2 py-0.5 bg-sky-500/20 text-sky-400 text-[10px] font-bold rounded">OBSERVATION 2</span>
+              <h3 class="text-[var(--foreground)] font-bold text-sm">Negative Drawdowns</h3>
+            </div>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-3">
+              All 40 schemes contain negative numbers in <code class="text-teal-400">max_drawdown_pct</code> (ranging from -2.23% to -33.5%).
+            </p>
+            <div class="p-2.5 bg-sky-950/20 border border-sky-500/30 rounded text-[11px] text-sky-300">
+              <strong>Domain Context:</strong> Financial drawdown mathematically denotes peak-to-trough decline; negative signs are natively accurate.
+            </div>
+          </div>
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)]">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="px-2 py-0.5 bg-teal-500/20 text-teal-400 text-[10px] font-bold rounded">OBSERVATION 3</span>
+              <h3 class="text-[var(--foreground)] font-bold text-sm">KYC Compliance Split</h3>
+            </div>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed mb-3">
+              In <code class="text-teal-400">investor_transactions</code>, 30,146 (91.97%) rows are <span class="text-green-400">Verified</span> while 2,632 (8.03%) are <span class="text-amber-400">Pending</span>.
+            </p>
+            <div class="p-2.5 bg-teal-950/20 border border-teal-500/30 rounded text-[11px] text-teal-300">
+              <strong>Workflow Handling:</strong> downstream settled AUM models must filter for Verified accounts to avoid provisional inflation.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Referential Integrity -->
+    <div class="slide" id="slide-7">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="mb-6">
+          <span class="text-xs font-bold text-green-400 uppercase tracking-wider">Integrity Proof</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-[var(--foreground)]">AMFI Referential Integrity Validation</h2>
+        </div>
+        <div class="bg-gradient-to-r from-emerald-950/40 to-teal-950/20 border border-emerald-500/40 rounded-xl p-5 mb-6 flex items-center space-x-4">
+          <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center font-bold text-2xl shrink-0">
+            ✓
+          </div>
+          <div>
+            <h3 class="text-emerald-400 font-bold text-lg">100% Referential Integrity Confirmed</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Every scheme code in <code class="text-teal-300">fund_master</code> exists in <code class="text-teal-300">nav_history</code>. Zero missing codes, zero orphan records, exactly 1,150 days of trading per scheme.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)] text-center">
+            <span class="text-3xl font-black text-emerald-400 block">40 / 40</span>
+            <span class="text-xs font-bold text-[var(--foreground)] mt-1 block">Master Schemes Matched</span>
+            <p class="text-[11px] text-[var(--muted-foreground)] mt-2">Zero missing codes in the NAV series</p>
+          </div>
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)] text-center">
+            <span class="text-3xl font-black text-sky-400 block">1,150</span>
+            <span class="text-xs font-bold text-[var(--foreground)] mt-1 block">Trading Days Per Fund</span>
+            <p class="text-[11px] text-[var(--muted-foreground)] mt-2">Uniform calendar series (Jan 2022 to May 2026)</p>
+          </div>
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)] text-center">
+            <span class="text-3xl font-black text-amber-400 block">46,000</span>
+            <span class="text-xs font-bold text-[var(--foreground)] mt-1 block">Total Continuous Records</span>
+            <p class="text-[11px] text-[var(--muted-foreground)] mt-2">Zero orphan records across all foreign keys</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Deliverables & Roadmap -->
+    <div class="slide" id="slide-8">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 md:p-8 shadow-xl">
+        <div class="mb-6">
+          <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">Milestone & Next Steps</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-[var(--foreground)]">Day 1 Deliverables & Quantitative Roadmap</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)]">
+            <h3 class="text-emerald-400 font-bold text-base mb-3">✓ Day 1 Deliverables Completed</h3>
+            <ul class="text-xs space-y-2 text-[var(--muted-foreground)]">
+              <li><strong class="text-[var(--foreground)]">data_ingestion.py</strong>: Complete ingestion, audit & reporting script</li>
+              <li><strong class="text-[var(--foreground)]">live_nav_fetch.py</strong>: Real-time mfapi.in REST integration</li>
+              <li><strong class="text-[var(--foreground)]">requirements.txt</strong>: Verified, pinned Python dependencies</li>
+              <li><strong class="text-[var(--foreground)]">sql/schema.sql</strong>: 10 relational DDL tables defined</li>
+              <li><strong class="text-[var(--foreground)]">reports/data_quality_summary.md</strong>: Audit document</li>
+              <li><strong class="text-[var(--foreground)]">GitHub Repo</strong>: Live on origin/main with Day 1 commit</li>
+              <li><strong class="text-[var(--foreground)]">Day1_Mutual_Fund_Analytics.pptx</strong>: PowerPoint deck generated</li>
+            </ul>
+          </div>
+          <div class="bg-[var(--background)] p-5 rounded-xl border border-[var(--border)]">
+            <h3 class="text-sky-400 font-bold text-base mb-3">➔ Quantitative Analytics Roadmap</h3>
+            <ul class="text-xs space-y-2 text-[var(--muted-foreground)]">
+              <li><strong class="text-[var(--foreground)]">Rolling Risk & Returns</strong>: Rolling Sharpe, Sortino, Treynor & Jensen's Alpha</li>
+              <li><strong class="text-[var(--foreground)]">SIP Regimes Simulation</strong>: XIRR & recurring investment returns vs. lump sums</li>
+              <li><strong class="text-[var(--foreground)]">Multi-Factor Attribution</strong>: Fama-French style regression vs. NIFTY indices</li>
+              <li><strong class="text-[var(--foreground)]">Complex SQL Queries</strong>: Fund manager alpha tracking & style drift analysis</li>
+              <li><strong class="text-[var(--foreground)]">Interactive Visual Dashboard</strong>: Screeners, risk-return scatter plots & portfolios</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Controls Footer -->
+  <footer class="flex items-center justify-between pt-4 border-t border-[var(--border)] mt-6">
+    <div class="text-xs text-[var(--muted-foreground)]">
+      Use <kbd class="px-1.5 py-0.5 bg-[var(--card)] border border-[var(--border)] rounded text-[10px]">←</kbd> / <kbd class="px-1.5 py-0.5 bg-[var(--card)] border border-[var(--border)] rounded text-[10px]">→</kbd> keys or buttons to navigate
+    </div>
+    <div class="flex items-center space-x-3">
+      <button id="prevBtn" onclick="changeSlide(-1)" class="px-4 py-1.5 bg-[var(--card)] hover:bg-[var(--border)] border border-[var(--border)] rounded-lg text-xs font-semibold text-[var(--foreground)] transition-colors">
+        Previous
+      </button>
+      <button id="nextBtn" onclick="changeSlide(1)" class="px-4 py-1.5 bg-teal-600 hover:bg-teal-500 text-white rounded-lg text-xs font-semibold transition-colors">
+        Next
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 8;
+
+    function showSlide(n) {
+      if (n > totalSlides) currentSlide = 1;
+      else if (n < 1) currentSlide = totalSlides;
+      else currentSlide = n;
+
+      for (let i = 1; i <= totalSlides; i++) {
+        const el = document.getElementById('slide-' + i);
+        if (el) {
+          if (i === currentSlide) {
+            el.classList.add('active');
+          } else {
+            el.classList.remove('active');
+          }
+        }
+      }
+
+      document.getElementById('slideIndicator').innerText = `Slide ${currentSlide} / ${totalSlides}`;
+      document.getElementById('prevBtn').disabled = (currentSlide === 1);
+      document.getElementById('prevBtn').style.opacity = (currentSlide === 1) ? '0.5' : '1';
+    }
+
+    function changeSlide(step) {
+      showSlide(currentSlide + step);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        changeSlide(1);
+      } else if (e.key === 'ArrowLeft') {
+        changeSlide(-1);
+      }
+    });
+
+    showSlide(1);
+  </script>
+</body>
+</html>
